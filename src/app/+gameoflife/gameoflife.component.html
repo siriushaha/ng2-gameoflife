@@ -1,0 +1,56 @@
+  <div class="container" ng-controller='GameController as vm'>
+    <div class="page-header text-center">
+      <h1>
+        <span class="text-muted">Conway's</span> Game of Life
+      </h1>
+    </div>
+    <div>
+      <div class="buttons-container">
+        <button class="btn btn-primary" 
+                [disabled]="!thumbs.length"
+                (click)="reset()">
+          NEW
+        </button>
+        <button class="btn btn-success"
+                (click)="save()">
+          SAVE
+        </button>
+        <button class='btn btn-default'
+                *ngIf="!isStarted"
+                (click)="life.next()">
+          NEXT
+        </button>
+        <label for="autoplay" class="btn btn-default" [class.selected]="autoplay.checked">
+          <input #autoplay type="checkbox" 
+                 (change)="togglePlay(autoplay)"> Autoplay
+        </label>  
+      </div>
+    </div>
+    <table class='grid'>
+      <tr *ngFor="let row of board">
+        <td *ngFor="let cell of row"
+            [class.alive]="cell.isAlive"
+            (click)="cell.toggle()">
+        </td>
+      </tr>
+    </table>
+    <div class="thumbs-container">
+      <div class="thumb-container"
+           *ngFor="let thumb of thumbs; let i=index">
+        <div>
+          <table class="grid-thumb" 
+                 (click)="load(thumb)">
+            <tr *ngFor="let row of thumb">
+              <td *ngFor="let cell of row"
+                  [class.alive]="cell.isAlive">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="icon-close-thumb" (click)="thumbs.splice(i,1)">
+          <i class="fa fa-trash"></i>
+          <span class='text-small'>delete</span>
+        </div>
+      </div>
+    </div>
+  </div>  
