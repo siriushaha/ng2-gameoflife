@@ -1,5 +1,5 @@
 import { Cell } from './cell.model';
-import { IBoard } from './board.model';
+import { IBoard, Board } from './board.model';
 
 export class Life {
 	
@@ -16,7 +16,7 @@ export class Life {
 	}
 
   next(): void {
-    this.previousBoard = [...this.board];
+    this.previousBoard = Board.copyBoard(this.board);
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         this.board[y][x] = this.newCellState(this.previousBoard, x, y);

@@ -20,9 +20,9 @@
                 (click)="life.next()">
           NEXT
         </button>
-        <label for="autoplay" class="btn btn-default" [class.selected]="autoplay.checked">
-          <input #autoplay type="checkbox" 
-                 (change)="togglePlay(autoplay)"> Autoplay
+        <label for="autoplay" class="btn btn-default" [class.selected]="autoplay.cheched">
+          <input #autoplay type="checkbox" [checked]="isStarted"
+                 (change)="autoPlay(autoplay)"> Autoplay
         </label>  
       </div>
     </div>

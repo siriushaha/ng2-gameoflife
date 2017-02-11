@@ -16,5 +16,15 @@ export class Board {
     }
     return newBoard;
 	}
+	
+	static copyBoard(board: IBoard) : IBoard {
+    let newBoard: IBoard = [];
+    let size = board.length;
+    for (let i=0; i < size; i++) {
+      newBoard[i] = [...board[i]];
+    }
+    return newBoard;
+  }
+
 }
 
