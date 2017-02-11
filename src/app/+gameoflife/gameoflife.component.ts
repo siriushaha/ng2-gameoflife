@@ -11,6 +11,7 @@ export class GameOfLifeComponent implements OnInit {
 
   thumbs: any;
   interval: number;
+  boardSize: number = 15;
   timer: any = undefined;
   isStarted: boolean = false;
   board: Cell[][];
@@ -54,7 +55,7 @@ export class GameOfLifeComponent implements OnInit {
     if (this.isStarted && this.timer) {
       clearInterval(this.timer);
     }
-    let seed = Board.generate(15);
+    let seed = Board.generate(this.boardSize);
     this.life = new Life(seed);
     this.board = this.life.board;
     this.isStarted = false;
