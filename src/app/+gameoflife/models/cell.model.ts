@@ -14,15 +14,7 @@ export class Cell implements ICell {
   toggle(): void {
     this.isAlive = !this.isAlive;
   }
-  
-  lives(): void {
-    this.isAlive = true;
-  }
-  
-  dies(): void {
-    this.isAlive = false;
-  }
-  
+
   getAliveNeighbors(board: IBoard): number {
     let { y, x } = this.position;
     let prevRow: Array<Cell> = board[y - 1] || [];

@@ -14,7 +14,7 @@ export class GameOfLifeComponent implements OnInit {
   boardSize: number = 15;
   timer: any = undefined;
   isStarted: boolean = false;
-  board: Cell[][];
+  board: IBoard;
   life: Life;
   
   constructor() { 
@@ -27,20 +27,16 @@ export class GameOfLifeComponent implements OnInit {
     this.thumbs.push(Board.copyBoard(initialSeed));
     this.life = new Life(initialSeed);
     this.board = this.life.board;
-    //console.log(this.life)
-    //console.log(this.board)
     this.togglePlay();
   }
 
   autoPlay(element: HTMLInputElement): void {
     this.isStarted = element.checked;
-    //console.log(`isStarted is ${this.isStarted}`)
     this.togglePlay();
   }
   
   save(): void{
     let board: IBoard = Board.copyBoard(this.board);
-    //console.log(board);
     this.thumbs.push(board);
   }
 
@@ -48,7 +44,6 @@ export class GameOfLifeComponent implements OnInit {
     this.reset();
     this.life = new Life(Board.copyBoard(seed));
     this.board = this.life.board;
-    //this.togglePlay();
   }
 
   reset(): void {
