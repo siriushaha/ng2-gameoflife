@@ -10,12 +10,12 @@ import { Life, Cell, Board, IBoard, initialSeed } from './models';
 export class GameOfLifeComponent implements OnInit {
 
   thumbs: any;
-  interval: number;
-  boardSize: number = 15;
-  timer: any = undefined;
+  private interval: number;
+  private boardSize: number = 15;
+  private timer: any = undefined;
   isStarted: boolean = false;
   board: IBoard;
-  life: Life;
+  private life: Life;
   
   constructor() { 
     this.thumbs = [];
